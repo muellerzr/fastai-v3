@@ -8,10 +8,9 @@ from io import BytesIO
 from fastai import *
 from fastai.vision import *
 
-model_file_url = 'https://www.dropbox.com/s/y4kl2gv1akv7y4i/stage-2.pth?raw=1'
-model_file_name = 'model'
-
-classes = ['black', 'grizzly', 'teddys']
+model_file_url = 'https://drive.google.com/uc?export=download&id=1-1SIfRVLmvIQ6p0YAZQobQF9N-RXqdXx'
+model_file_name = 'final_product'
+classes = ['Lampropeltis elapsoides', 'Micrurus fulvius', 'Agkistrodon piscivorus','Coluber constrictor priapus', 'Drymarchon couperi', 'Nerodia fasciata','Pantherophis guttatus', 'Sistrurus miliarius barbouri']
 path = Path(__file__).parent
 
 app = Starlette()
