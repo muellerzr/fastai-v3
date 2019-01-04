@@ -8,7 +8,7 @@ from io import BytesIO
 from fastai import *
 from fastai.vision import *
 
-model_file_url = 'https://www.dropbox.com/s/4nncbwc4duxqtk0/final_version.pth?dl=1'
+model_file_url = 'https://www.dropbox.com/s/ezs50e521qbagz5/test.pth?dl=1'
 model_file_name = 'test'
 classes = ['Lampropeltis elapsoides', 'Micrurus fulvius', 'Agkistrodon piscivorus','Coluber constrictor priapus', 'Drymarchon couperi', 'Nerodia fasciata','Pantherophis guttatus', 'Sistrurus miliarius barbouri']
 path = Path(__file__).parent
