@@ -8,7 +8,7 @@ from io import BytesIO
 from fastai import *
 from fastai.vision import *
 
-model_file_url = 'https://dl-web.dropbox.com/get/IsItVenemous/final_product.pth?_download_id=25222988768802679644031089422094587973371592023927700346851495&_notify_domain=www.dropbox.com&_subject_uid=635321042&dl=1&w=AADvJFV2MrBa2OnBw9doGsKYR5SPYoXxp_lQ27Ndlha1GQ'
+model_file_url = 'https://www.dropbox.com/s/5p4t4jz7w7hyuf2/final_product.pth?dl=1'
 model_file_name = 'final_product'
 classes = ['Lampropeltis elapsoides',
  'Micrurus fulvius',
