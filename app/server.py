@@ -46,6 +46,7 @@ async def download_file(url, dest):
 
 async def setup_learner():
     await download_file(model_file_url, path/'models'/f'{model_file_name}.pth')
+    await download_file(model_2_file_url, path/'models'/f'{model_2_file_name}.pth')
     data_bunch = ImageDataBunch.single_from_classes(path, classes1,
         tfms=get_transforms(), size=224).normalize(imagenet_stats)
     data_bunch2 = ImageDataBunch.single_from_classes(path, classes1,
