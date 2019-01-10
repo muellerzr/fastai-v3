@@ -10,7 +10,20 @@ from fastai.vision import *
 
 model_file_url = 'https://www.dropbox.com/s/5p4t4jz7w7hyuf2/final_product.pth?dl=1'
 model_file_name = 'final_product'
-classes = ['Lampropeltis elapsoides',
+
+model_2_file_url = 'https://www.dropbox.com/s/5p4t4jz7w7hyuf2/final_product.pth?dl=1'
+model_2_file_name = 'final_product'
+
+classes1 = ['Lampropeltis elapsoides',
+ 'Micrurus fulvius',
+ 'Agkistrodon piscivorus',
+ 'Coluber constrictor priapus',
+ 'Drymarchon couperi',
+ 'Nerodia fasciata',
+ 'Pantherophis guttatus',
+ 'Sistrurus miliarius barbouri']
+
+classes2 = ['Lampropeltis elapsoides',
  'Micrurus fulvius',
  'Agkistrodon piscivorus',
  'Coluber constrictor priapus',
@@ -33,11 +46,21 @@ async def download_file(url, dest):
 
 async def setup_learner():
     await download_file(model_file_url, path/'models'/f'{model_file_name}.pth')
-    data_bunch = ImageDataBunch.single_from_classes(path, classes,
+    data_bunch = ImageDataBunch.single_from_classes(path, classes1,
         tfms=get_transforms(), size=224).normalize(imagenet_stats)
+    data_bunch2 = ImageDataBunch.single_from_classes(path, classes1,
+        tfms=get_transforms(), size=224).normalize(imagenet_stats)
+    
     learn = create_cnn(data_bunch, models.resnet34, pretrained=False)
     learn.load(model_file_name)
-    #return learn
+    if learn == 'Lampropeltis elapsoides'
+     learn = create_cnn(data_bunch2, models.resnet34, pretrained=False)
+     learn.load(model_2_file_name)
+     print("Running it again")
+     return learn
+    else:
+     return learn
+    
 
 loop = asyncio.get_event_loop()
 tasks = [asyncio.ensure_future(setup_learner())]
