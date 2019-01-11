@@ -54,7 +54,7 @@ async def setup_learner():
     
     learn = create_cnn(data_bunch, models.resnet34, pretrained=False)
     learn.load(model_file_name)
-    if learn == 'Result = Lampropeltis elapsoides':
+    if learn == 'Lampropeltis elapsoides':
      learn = create_cnn(data_bunch2, models.resnet34, pretrained=False)
      learn.load(model_2_file_name)
      print("Running it again")
