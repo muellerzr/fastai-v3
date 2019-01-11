@@ -58,9 +58,7 @@ async def setup_learner():
      learn = create_cnn(data_bunch2, models.resnet34, pretrained=False)
      learn.load(model_2_file_name)
      print("Running it again")
-     return learn
-    else:
-     #return learn
+     
     return learn
 
 loop = asyncio.get_event_loop()
