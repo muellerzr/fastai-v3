@@ -36,7 +36,9 @@ async def download_file(url, dest):
 
 async def setup_learner():
     await download_file(data_clas_url, path/f'{data_class_name}.pkl')
+    print(path/f'{data_class_name}.pkl')
     await download_file(model_file_url, path/'models'/f'{model_file_name}.pth')
+    print(path/'models'/f'{model_file_name}.pth')
 
     data_clas = load_data(path, 'data_clas_export.pkl')
 
