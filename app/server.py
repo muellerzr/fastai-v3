@@ -11,10 +11,14 @@ from fastai.tabular import *
 
 
 model_file_url = 'https://www.dropbox.com/s/i5mbivnaocbshqz/good_model_epoc_3.pth?dl=0'
-model_file_name = 'goodModel'
+model_file_name = 'good_model_epoc_3'
 
 data_clas_url = 'https://www.dropbox.com/s/wo8f9xoqnxe9ag7/data_clas_export.pkl?dl=1'
 data_class_name = 'data_clas_export'
+
+
+encoder_clas_url = 
+encoder_clas_name = 'ft_enc'
 
 #Testing
 
@@ -49,7 +53,7 @@ async def setup_learner():
 
 loop = asyncio.get_event_loop()
 tasks = [asyncio.ensure_future(setup_learner())]
-learn = loop.run_until_complete(asyncio.gather(*tasks))
+learn = loop.run_until_complete(asyncio.gather(*tasks))[0]
 loop.close()
 
 @app.route('/')
