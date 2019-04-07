@@ -36,7 +36,7 @@ async def download_file(url, dest):
 async def setup_learner():
     await download_file(model_file_url, path/'models'/f'{model_file_name}.pth')
     await download_file(data_clas_url, path/'models'/f'{data_class_name}.pth')
-    data_clas = load_data(path, 'data_clas_export.pkl')
+    data_clas = load_data(path/'models', 'data_clas_export.pkl')
 
     learn = text_classifier_learner(data_clas, AWD_LSTM, drop_mult=0.5);
     learn.load(model_file_name)
