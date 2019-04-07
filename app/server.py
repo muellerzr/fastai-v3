@@ -6,6 +6,7 @@ import uvicorn, aiohttp, asyncio
 from io import BytesIO
 
 from fastai import *
+from fastai.text import *
 from fastai.tabular import *
 
 
