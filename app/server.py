@@ -17,7 +17,7 @@ data_clas_url = 'https://www.dropbox.com/s/wo8f9xoqnxe9ag7/data_clas_export.pkl?
 data_class_name = 'data_clas_export'
 
 
-#encoder_clas_url = 
+encoder_clas_url = 'https://www.dropbox.com/s/78ebhru01jxpx9b/ft_enc.pth?dl=1'
 encoder_clas_name = 'ft_enc'
 
 #Testing
@@ -43,10 +43,12 @@ async def setup_learner():
     print(path/f'{data_class_name}.pkl')
     await download_file(model_file_url, path/'models'/f'{model_file_name}.pth')
     print(path/'models'/f'{model_file_name}.pth')
+    await download_file(encoder_clas_url, path/'models'/f'{encoder_clas_name}.pth')
 
     data_clas = load_data(path, 'data_clas_export.pkl')
 
     learn = text_classifier_learner(data_clas, AWD_LSTM, drop_mult=0.5);
+    learn.load_encoder(encoder_clas_name)
     learn.load(model_file_name)
      
     return learn
