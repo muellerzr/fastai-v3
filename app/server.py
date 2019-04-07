@@ -9,14 +9,8 @@ from fastai import *
 from fastai.text import *
 from fastai.tabular import *
 
-
 model_file_url = 'https://www.dropbox.com/s/x6p73q0kwei7mea/goodModel.pkl?dl=1'
-model_file_name = 'goodModel'
-
-
-#Testing
-
-
+model_file_name = 'export'
 
 
 path = Path(__file__).parent
@@ -33,9 +27,10 @@ async def download_file(url, dest):
             with open(dest, 'wb') as f: f.write(data)
 
 async def setup_learner():
-    await download_file(model_file_url, path/'models'/f'{model_file_name}.pkl')
+    await download_file(model_file_url, path/'models'/f'{model_file_name}.pth')
+    #await download_file(data_clas_url, path/'models'/f'{data_class_name}.pth')
 
-    learn = load_learner(path/'models')
+    learn= load_learner(path/'models')
      
     return learn
 
@@ -55,8 +50,27 @@ async def analyze(request):
     content = data['content']
     prediction = learn.predict(content)[2]
     reliability = prediction[7]-(prediction[6]*prediction[0]) - prediction[0] - prediction[4] - prediction[5] - prediction[8] - (prediction[1]-prediction[11])
-    return JSONResponse({'result': str(reliability)})
+    #reliability = int(reliability)
+    EddyScore = ((reliability.item())*50)+50
+    #print(EddyScore)
+    EddyScore = int(EddyScore)
+    #if EddyScore < 40:
+    #    return JSONResponse({'Reliability score': str(EddyScore),'Recommendation:':'This source is not reliable in the slightest. We recommend searching other avenues for news and current events.'})
+        #return JSONResponse(data)
+    #elif (EddyScore < 60) and (EddyScore > 40):
+    #    return JSONResponse({'Reliability score': str(EddyScore),'Recommendation:':'This source is decently unreliable, check into any strong claims that have been made.'})
+        #return JSONResponse(data)
+    #elif (EddyScore < 80) and (EddyScore > 60):
+    #    return JSONResponse({'Reliability score': str(EddyScore),'Recommendation:':'This source is fairly reliable, minimum research is recommended into claims.'})
+        #return JSONResponse(data)
+    #else:
+     #   return JSONResponse({'Reliability score': str(EddyScore),'Recommendation:':'This source is extremely reliable and gets the Suspecto Seal of Approval!'})
+        #return JSONResponse(data)
+    #return JSONResponse({'result': str(reliability)})
+    return JSONResponse({'result': EddyScore})
+   
 
 if __name__ == '__main__':
     if 'serve' in sys.argv: uvicorn.run(app, host='0.0.0.0', port=5042)
+
 
