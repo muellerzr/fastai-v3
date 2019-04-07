@@ -33,7 +33,7 @@ async def download_file(url, dest):
             with open(dest, 'wb') as f: f.write(data)
 
 async def setup_learner():
-    await download_file(model_file_url, path/'models'/f'{data_class_name}.pkl')
+    await download_file(model_file_url, path/'models'/f'{model_file_name}.pkl')
 
     learn = load_learner(path/'models')
      
