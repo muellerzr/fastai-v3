@@ -14,7 +14,7 @@ model_file_url = 'https://www.dropbox.com/s/i5mbivnaocbshqz/good_model_epoc_3.pt
 model_file_name = 'goodModel'
 
 data_clas_url = 'https://www.dropbox.com/s/wo8f9xoqnxe9ag7/data_clas_export.pkl?dl=1'
-data_class_name = 'data_clas_export.pkl'
+data_class_name = 'data_clas_export'
 
 
 
@@ -34,9 +34,10 @@ async def download_file(url, dest):
             with open(dest, 'wb') as f: f.write(data)
 
 async def setup_learner():
+    await download_file(data_clas_url, path/f'{data_class_name}.pkl')
     await download_file(model_file_url, path/'models'/f'{model_file_name}.pth')
-    await download_file(data_clas_url, path/'models'/f'{data_class_name}.pth')
-    data_clas = load_data(path/'models', data_class_name)
+
+    data_clas = load_data(path, data_class_name)
 
     learn = text_classifier_learner(data_clas, AWD_LSTM, drop_mult=0.5);
     learn.load(model_file_name)
