@@ -17,7 +17,7 @@ data_clas_url = 'https://www.dropbox.com/s/wo8f9xoqnxe9ag7/data_clas_export.pkl?
 data_class_name = 'data_clas_export'
 
 
-encoder_clas_url = 
+#encoder_clas_url = 
 encoder_clas_name = 'ft_enc'
 
 #Testing
